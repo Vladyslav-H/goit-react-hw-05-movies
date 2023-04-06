@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { HiDocumentSearch } from 'react-icons/hi';
 import { useSearchParams } from 'react-router-dom';
-import { Form, Input } from './SearchForm.styled';
-import { Button } from 'components/Button/Button.styled';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { Form, Input } from './SearchForm.styled';
+import { Button } from 'components/Button/Button.styled';
 
 const SearchForm = () => {
   const [searchName, setSearchName] = useState('');

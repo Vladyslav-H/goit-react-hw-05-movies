@@ -27,7 +27,7 @@ const Cast = () => {
       }
     };
     setTimeout(() => {
-      window.scrollBy(0, 450);
+      window.scrollBy(0, 350);
     }, 500);
 
     getCast();

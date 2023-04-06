@@ -27,9 +27,7 @@ const Reviews = () => {
         setIsLoading(false);
       }
     };
-   setTimeout(() => {
-      window.scrollBy(0, 450);
-    }, 500);
+    window.scrollBy(0, 250);
     getCast();
   }, [movieId]);
 

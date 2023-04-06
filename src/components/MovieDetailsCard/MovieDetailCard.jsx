@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import { CardContainer } from './MovieDatailsCard.styled';
-import { DescriptionContainer } from './MovieDatailsCard.styled';
+import { DescriptionContainer, EmptyImage } from './MovieDatailsCard.styled';
 import { getPoster } from 'services/moviesApi';
 import Loader from 'components/Loader/Loader';
 
@@ -20,14 +21,15 @@ const MovieDetailCard = ({ info }) => {
 
   useEffect(() => {
     if (!poster_path) return;
-   
+
     const getImgUrl = async () => {
-       setIsLoading(true);
+      setIsLoading(true);
       try {
         const data = await getPoster(poster_path);
         setUrl(data);
       } catch (error) {
         console.log(error.massege);
+        toast.error('Ooops! Something went wrong. Please, try later');
       } finally {
         setIsLoading(false);
       }
@@ -38,10 +40,15 @@ const MovieDetailCard = ({ info }) => {
   return (
     <CardContainer>
       {isLoading && <Loader />}
-      <img src={url} alt={url} />
+      {url ? (
+        <img src={url} alt={url} />
+      ) : (
+        <EmptyImage>Image not found</EmptyImage>
+      )}
       <DescriptionContainer>
         <h2>
-          {title}{realeaseYear ? <span>({realeaseYear})</span> : null}
+          {title}
+          {realeaseYear ? <span>({realeaseYear})</span> : null}
         </h2>
         <p>
           User score: <span>{userScore}%</span>

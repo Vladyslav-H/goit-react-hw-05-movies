@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import Loader from 'components/Loader/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { getTrendingMovie } from 'services/moviesApi';
 
 import MovieList from 'components/MovieList/MovieList';
 import { Title } from './HomePage.styled';
-import Loader from 'components/Loader/Loader';
 import { Container } from 'components/Container/Container.styled';
 
 const HomePage = () => {
@@ -12,6 +14,7 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    
     const setNewMovies = async () => {
       setIsLoading(true);
       try {
@@ -19,7 +22,7 @@ const HomePage = () => {
 
         setMovies([...data]);
       } catch (error) {
-        console.log(error.massege);
+        toast.error('Ooops! Something went wrong. Please, try later');
       } finally {
         setIsLoading(false);
       }
@@ -29,6 +32,7 @@ const HomePage = () => {
 
   return (
     <Container>
+      <ToastContainer position="top-center" theme="dark" />
       {isLoading && <Loader />}
       {movies.length > 0 && <Title>Trending today</Title>}
       <MovieList movies={movies} />

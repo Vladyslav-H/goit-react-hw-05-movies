@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
 import { getMovieReviews } from 'services/moviesApi';
-import Loader from 'components/Loader/Loader';
 import { Container } from 'components/Container/Container.styled';
+import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,18 +13,21 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    if (!movieId) return;
+
     const getCast = async () => {
       setIsLoading(true);
+
       try {
         const data = await getMovieReviews(movieId);
-
         if (data) setReviews(data);
       } catch (error) {
-        console.log(error.massege);
+        toast.error('Ooops! Something went wrong. Please, try later');
       } finally {
         setIsLoading(false);
       }
     };
+    window.scrollBy(0, 250);
     getCast();
   }, [movieId]);
 
@@ -40,7 +45,7 @@ const Reviews = () => {
             );
           })
         ) : (
-          <h2>We don`t have any reviews for this movie</h2>
+          <h2>Sorry, we don`t have any reviews for this movie</h2>
         )}
       </ul>
     </Container>

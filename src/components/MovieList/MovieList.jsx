@@ -3,12 +3,13 @@ import { GiFilmProjector } from 'react-icons/gi';
 import { IconContext } from 'react-icons';
 import PropTypes from 'prop-types';
 
-import { Item, List } from './MovieList.styled';
+import { Item } from './MovieList.styled';
 
 const MovieList = ({ movies }) => {
   const location = useLocation();
+
   return (
-    <List>
+    <ul>
       {movies.map(({ id, title }) => {
         return (
           <Item key={id}>
@@ -21,7 +22,7 @@ const MovieList = ({ movies }) => {
           </Item>
         );
       })}
-    </List>
+    </ul>
   );
 };
 

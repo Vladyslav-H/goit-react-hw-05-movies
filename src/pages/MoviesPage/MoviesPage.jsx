@@ -17,9 +17,10 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (!search) return;
-    
+
     const getMovies = async () => {
       setIsLoading(true);
+
       try {
         const movies = await getMovieByName(search);
         if (movies.length === 0) {
@@ -27,7 +28,7 @@ const MoviesPage = () => {
         }
         setArMovies(movies);
       } catch (error) {
-        console.log(error.massege);
+        toast.error('Ooops! Something went wrong. Please, try later');
       } finally {
         setIsLoading(false);
       }

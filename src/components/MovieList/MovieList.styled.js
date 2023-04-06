@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const List = styled.ul``;
-
 export const Item = styled.li`
   display: flex;
   align-items: flex-end;

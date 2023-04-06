@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Form, Input } from './SearchForm.styled';
 import { Button } from 'components/Button/Button.styled';
 
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SearchForm = () => {
@@ -36,7 +36,7 @@ const SearchForm = () => {
       <Button type="submit">
         Search <HiDocumentSearch />
       </Button>
-      <ToastContainer position="top-center" theme="dark" />
+     
     </Form>
   );
 };

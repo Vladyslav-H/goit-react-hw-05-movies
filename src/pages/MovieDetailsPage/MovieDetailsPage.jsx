@@ -1,3 +1,5 @@
+import { useEffect, useState, useRef } from 'react';
+import { TiArrowBack } from 'react-icons/ti';
 import {
   Outlet,
   useParams,
@@ -5,19 +7,17 @@ import {
   useLocation,
   Link,
 } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
 import { getMovieById } from 'services/moviesApi';
 
-import MovieDetailCard from 'components/MovieDetailsCard/MovieDetailCard';
-import { TiArrowBack } from 'react-icons/ti';
 import {
   InfoTitle,
   Item,
   ContainerDetPage,
   ButtonGoBack,
-  InfoContainer,
 } from './MovieDetailsPage.styled';
-
+import MovieDetailCard from 'components/MovieDetailsCard/MovieDetailCard';
 import Loader from 'components/Loader/Loader';
 
 const MovieDetailsPage = () => {
@@ -27,16 +27,16 @@ const MovieDetailsPage = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const prevPage = useRef(location.state);
 
   useEffect(() => {
     const getMovies = async () => {
       setIsLoading(true);
       try {
         const data = await getMovieById(movieId);
-
         setMovieInfo(data);
       } catch (error) {
-        console.log(error.massege);
+        toast.error('Ooops! Something went wrong. Please, try later');
       } finally {
         setIsLoading(false);
       }
@@ -44,8 +44,7 @@ const MovieDetailsPage = () => {
     getMovies();
   }, [movieId]);
 
-  const goBack = () => navigate( location.state );
-  // const goBack = () => navigate('/movies' );
+  const goBack = () => navigate(prevPage.current);
 
   return (
     <ContainerDetPage>
@@ -55,21 +54,21 @@ const MovieDetailsPage = () => {
       </ButtonGoBack>
       <div>
         <MovieDetailCard info={movieInfo} />
-        <InfoContainer>
+        <div>
           <InfoTitle>Additional information</InfoTitle>
           <ul>
             <Item>
-              <Link state={location} to="cast">
+              <Link state={prevPage} to="cast">
                 Cast
               </Link>
             </Item>
             <Item>
-              <Link state={location}  to="reviews">
+              <Link state={prevPage} to="reviews">
                 Review
               </Link>
             </Item>
           </ul>
-        </InfoContainer>
+        </div>
       </div>
       <Outlet />
     </ContainerDetPage>

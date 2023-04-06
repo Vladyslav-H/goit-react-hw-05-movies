@@ -10,10 +10,6 @@ export const ButtonGoBack = styled(Button)`
   margin-bottom: 40px;
 `;
 
-export const InfoContainer = styled.div`
-  /* margin-bottom: 30px; */
-`;
-
 export const Item = styled.li`
   display: block;
   color: green;

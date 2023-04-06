@@ -7,7 +7,7 @@ import {
   useLocation,
   Link,
 } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { getMovieById } from 'services/moviesApi';
 
@@ -48,6 +48,7 @@ const MovieDetailsPage = () => {
 
   return (
     <ContainerDetPage>
+       <ToastContainer position="top-center" theme="dark" />
       {isLoading && <Loader />}
       <ButtonGoBack type="button" onClick={goBack}>
         <TiArrowBack /> Go back

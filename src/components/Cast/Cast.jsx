@@ -26,8 +26,10 @@ const Cast = () => {
         setIsLoading(false);
       }
     };
+    setTimeout(() => {
+      window.scrollBy(0, 450);
+    }, 500);
 
-    window.scrollBy(0, 450);
     getCast();
   }, [movieId]);
 

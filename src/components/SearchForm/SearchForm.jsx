@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SearchForm = () => {
   const [searchName, setSearchName] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [searchParams, setSaerchParams] = useSearchParams();
 
   const handleSubmit = e => {

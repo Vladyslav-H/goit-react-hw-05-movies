@@ -1,32 +1,13 @@
 import styled from 'styled-components';
 import { Container } from 'components/Container/Container.styled';
+import { Button } from 'components/Button/Button.styled';
 
 export const ContainerDetPage = styled(Container)`
   align-items: flex-start;
 `;
 
-export const ButtonGoBack = styled.button`
-  width: 150px;
-  height: 35px;
+export const ButtonGoBack = styled(Button)`
   margin-bottom: 40px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  background-color: green;
-  box-shadow: 3px 5px 24px -9px rgba(0, 0, 0, 0.75);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    scale: 1.1;
-    color: green;
-    background-color: #fff;
-    border: 1px solid green;
-  }
 `;
 
 export const InfoContainer = styled.div`

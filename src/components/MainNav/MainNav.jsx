@@ -5,10 +5,9 @@ import { Nav, Link } from './MainNav.styled';
 
 const MainNav = () => {
   const location = useLocation();
-  console.log(location);
+  console.log('nav', location.state);
   return (
     <Nav>
-      {' '}
       <Link state={location} to="/" end>
         Home <AiOutlineHome />
       </Link>

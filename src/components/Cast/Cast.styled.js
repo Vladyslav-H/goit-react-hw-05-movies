@@ -25,6 +25,7 @@ export const EmptyImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: lightgrey;
 `;
 
 export const DescriptionWrapp = styled.div`

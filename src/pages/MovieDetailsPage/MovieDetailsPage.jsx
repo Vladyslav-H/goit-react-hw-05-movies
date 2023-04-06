@@ -44,7 +44,8 @@ const MovieDetailsPage = () => {
     getMovies();
   }, [movieId]);
 
-  const goBack = () => navigate(location.state);
+  const goBack = () => navigate( location.state );
+  // const goBack = () => navigate('/movies' );
 
   return (
     <ContainerDetPage>
@@ -63,7 +64,7 @@ const MovieDetailsPage = () => {
               </Link>
             </Item>
             <Item>
-              <Link state={location} to="reviews">
+              <Link state={location}  to="reviews">
                 Review
               </Link>
             </Item>
